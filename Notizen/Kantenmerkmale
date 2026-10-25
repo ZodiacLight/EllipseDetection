@@ -1,0 +1,23 @@
+# Merkamle:
+
+lokal ein heligkeitsmaxima
+durch farbverlauf bei kleinen Kratern die eine seite hell die andere Dunkel
+ort wo, der größte helligkeitsuterschied ist
+der helligkeitsunterschied ist in einem sehr kleinem rahmen sichtbar (3x3 feld)
+
+kanten sind immer dort, wo zwei helligkeiten aufeinander treffen
+je nach auflösung des bildes muss bei mondbilder neu definiert werden wie dicke eine kante maxial sein darf (pixel)
+
+# wichtiger unterschied zu reinen farbindex verläufen:
+
+es ist nur ein wall (schwelllwert mit einer maximalen dicke der kanter festlegen) also ein streifen und keine ganze fläche
+
+# mögliche algorithmische lösungen abgeleitet von verschiedenen verfahren:
+
+nach der stärksten helligkeitsschwankung innerhalb eines lokalen bereiches suchen (immer die helle stelle wählen)
+nach benachbarung der ähnlichen helligkeit oder farbwerten schauen wenn es diese nichg gibt handelt es sich wohl um ein rauschen (rauschen sollte auch nochmal gesondert geprüft werden)
+ansonsten wird von dessen nachbarn nach weiteren helligkeitsähnlichen geschaut, damit wird auch ein kanten helligkeitsverlauf mit einbezogen
+so wird immerweiter an einer helligkeitskante entlang gegangen, bis diese sich verliert
+
+der vorgang kann wie beim pixel segmente bilden sein, bei dem nur alle bereits geprüften pixel-nachbarn geprüft werden und eine label-vergabe erfolgt
+eine überprüfung durch andere kantenerkennungsverfahren ohne schwellwerte oder mit wie durch eine canny abweandlung kann auch zur genauigkeit erfolgen
